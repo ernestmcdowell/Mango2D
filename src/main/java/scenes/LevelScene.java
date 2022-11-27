@@ -1,4 +1,6 @@
-package jade;
+package scenes;
+
+import mango.Window;
 
 public class LevelScene extends Scene {
     public LevelScene() {
