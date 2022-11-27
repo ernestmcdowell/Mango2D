@@ -15,8 +15,6 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class ImGuiLayer {
 
-    private GameViewport gameViewport;
-
     private long glfwWindow;
 
     // Mouse cursors provided by GLFW
@@ -24,11 +22,13 @@ public class ImGuiLayer {
 
     // LWJGL3 renderer (SHOULD be initialized)
     private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
+
+    private GameViewport gameViewWindow;
     private PropertiesWindow propertiesWindow;
 
     public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
         this.glfwWindow = glfwWindow;
-        this.gameViewport = new GameViewport();
+        this.gameViewWindow = new GameViewport();
         this.propertiesWindow = new PropertiesWindow(pickingTexture);
     }
 
@@ -128,7 +128,7 @@ public class ImGuiLayer {
                 ImGui.setWindowFocus(null);
             }
 
-            if (!io.getWantCaptureMouse() || gameViewport.getWantCaptureMouse()) {
+            if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse()) {
                 MouseListener.mouseButtonCallback(w, button, action, mods);
             }
         });
@@ -170,7 +170,7 @@ public class ImGuiLayer {
 
         // Fonts merge example
         fontConfig.setPixelSnapH(true);
-        fontAtlas.addFontFromFileTTF("assets/fonts/Rajdhani-Medium.ttf", 18, fontConfig);
+        fontAtlas.addFontFromFileTTF("assets/fonts/Rajdhani-Medium.ttf", 20, fontConfig);
 
         fontConfig.destroy(); // After all fonts were added we don't need this config more
 
@@ -192,7 +192,7 @@ public class ImGuiLayer {
         setupDockspace();
         currentScene.imgui();
         ImGui.showDemoWindow();
-        gameViewport.imgui();
+        gameViewWindow.imgui();
         propertiesWindow.update(dt, currentScene);
         propertiesWindow.imgui();
         ImGui.end();
@@ -250,5 +250,9 @@ public class ImGuiLayer {
 
         // Dockspace
         ImGui.dockSpace(ImGui.getID("Dockspace"));
+    }
+
+    public PropertiesWindow getPropertiesWindow() {
+        return this.propertiesWindow;
     }
 }

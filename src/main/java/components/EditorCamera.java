@@ -5,8 +5,7 @@ import mango.KeyListener;
 import mango.MouseListener;
 import org.joml.Vector2f;
 
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_KP_DECIMAL;
-import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_MIDDLE;
+import static org.lwjgl.glfw.GLFW.*;
 
 public class EditorCamera extends Component {
 
@@ -49,7 +48,7 @@ public class EditorCamera extends Component {
             levelEditorCamera.addZoom(addValue);
         }
 
-        if (KeyListener.isKeyPressed(GLFW_KEY_KP_DECIMAL)) {
+        if (KeyListener.isKeyPressed(GLFW_KEY_F)) {
             reset = true;
         }
 

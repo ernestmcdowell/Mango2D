@@ -27,26 +27,18 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
+        loadResources();
+        sprites = AssetPool.getSpritesheets("assets/images/blocks.bmp");
+        SpriteSheet gizmos = AssetPool.getSpritesheets("assets/images/gizmos.png");
+
         this.camera = new Camera(new Vector2f(-250, 0));
         levelEditorStuff.addComponent(new MouseControls());
         levelEditorStuff.addComponent(new GridLines());
         levelEditorStuff.addComponent(new EditorCamera(camera));
+        levelEditorStuff.addComponent(new TranslateGizmo(gizmos.getSprite(1),
+                Window.getImguiLayer().getPropertiesWindow()));
+        levelEditorStuff.start();
 
-//        obj1 = new Transform(new Vector2f(100, 500));
-//        obj2 = new Transform(new Vector2f(200, 500));
-//        rb1 = new Rigidbody2D();
-//        rb2 = new Rigidbody2D();
-//        rb1.setRawTransform(obj1);
-//        rb2.setRawTransform(obj2);
-//        rb1.setMass(100.0f);
-//        rb2.setMass(200.0f);
-//
-//        physics.addRigidbody(rb1);
-//        physics.addRigidbody(rb2);
-
-        loadResources();
-
-        sprites = AssetPool.getSpritesheets("assets/images/blocks.bmp");
 
     }
 
@@ -56,6 +48,8 @@ public class LevelEditorScene extends Scene {
         AssetPool.addSpritesheet("assets/images/blocks.bmp",
                 new SpriteSheet(AssetPool.getTexture("assets/images/blocks.bmp"),
                         16, 16, 81, 0));
+        AssetPool.addSpritesheet("assets/images/gizmos.png", new SpriteSheet(AssetPool.getTexture("assets/images/gizmos.png"),
+                24, 48, 2, 0));
         AssetPool.getTexture("assets/images/blocks.bmp");
 
         for (GameObject g : gameObjects) {
@@ -76,10 +70,6 @@ public class LevelEditorScene extends Scene {
             go.update(dt);
         }
 
-//        DebugDraw.addBox2D(obj1.position, new Vector2f(32, 32), 0.0f, new Vector3f(1, 0, 0));
-//        DebugDraw.addBox2D(obj2.position, new Vector2f(32, 32), 0.0f, new Vector3f(0.2f, 0.8f, 0.1f));
-//        physics.update(dt);
-
     }
 
     @Override
@@ -90,6 +80,10 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void imgui() {
+        ImGui.begin("Level Editor Stuff");
+        levelEditorStuff.imgui();
+        ImGui.end();
+
         ImGui.begin("Test window");
 
         ImVec2 windowPos = new ImVec2();
