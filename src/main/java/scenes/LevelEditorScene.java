@@ -16,7 +16,7 @@ public class LevelEditorScene extends Scene {
 
     private SpriteSheet sprites;
 
-    GameObject levelEditorStuff = new GameObject("LevelEditor", new Transform(new Vector2f()), 0);
+    GameObject levelEditorStuff = this.createGameObject("LevelEditor");
 //    PhysicsSystem2D physics = new PhysicsSystem2D(1.0f / 60.0f, new Vector2f(0, -10));
     Transform obj1, obj2;
     Rigidbody2D rb1, rb2;
@@ -34,12 +34,32 @@ public class LevelEditorScene extends Scene {
         this.camera = new Camera(new Vector2f(-250, 0));
         levelEditorStuff.addComponent(new MouseControls());
         levelEditorStuff.addComponent(new GridLines());
-        levelEditorStuff.addComponent(new EditorCamera(camera));
-        levelEditorStuff.addComponent(new TranslateGizmo(gizmos.getSprite(1),
-                Window.getImguiLayer().getPropertiesWindow()));
+        levelEditorStuff.addComponent(new EditorCamera(this.camera));
+        levelEditorStuff.addComponent(new GizmoSystem(gizmos));
+
         levelEditorStuff.start();
 
-
+//        obj1 = new Transform(new Vector2f(100, 500));
+//        obj2 = new Transform(new Vector2f(100, 300));
+//
+//        rb1 = new Rigidbody2D();
+//        rb2 = new Rigidbody2D();
+//        rb1.setRawTransform(obj1);
+//        rb2.setRawTransform(obj2);
+//        rb1.setMass(100.0f);
+//        rb2.setMass(200.0f);
+//
+//        Circle c1 = new Circle();
+//        c1.setRadius(10.0f);
+//        c1.setRigidbody(rb1);
+//        Circle c2 = new Circle();
+//        c2.setRadius(20.0f);
+//        c2.setRigidbody(rb2);
+//        rb1.setCollider(c1);
+//        rb2.setCollider(c2);
+//
+//        physics.addRigidbody(rb1, true);
+//        physics.addRigidbody(rb2, false);
     }
 
     private void loadResources() {
@@ -48,9 +68,10 @@ public class LevelEditorScene extends Scene {
         AssetPool.addSpritesheet("assets/images/blocks.bmp",
                 new SpriteSheet(AssetPool.getTexture("assets/images/blocks.bmp"),
                         16, 16, 81, 0));
-        AssetPool.addSpritesheet("assets/images/gizmos.png", new SpriteSheet(AssetPool.getTexture("assets/images/gizmos.png"),
-                24, 48, 2, 0));
-        AssetPool.getTexture("assets/images/blocks.bmp");
+        AssetPool.addSpritesheet("assets/images/gizmos.png",
+                new SpriteSheet(AssetPool.getTexture("assets/images/gizmos.png"),
+                        24, 48, 3, 0));
+        AssetPool.getTexture("assets/images/blendImage2.png");
 
         for (GameObject g : gameObjects) {
             if (g.getComponent(SpriteRenderer.class) != null) {
@@ -66,16 +87,15 @@ public class LevelEditorScene extends Scene {
     public void update(float dt) {
         levelEditorStuff.update(dt);
         this.camera.adjustProjection();
+
         for (GameObject go : this.gameObjects) {
             go.update(dt);
         }
-
     }
 
     @Override
-    public void render(){
+    public void render() {
         this.renderer.render();
-
     }
 
     @Override
@@ -84,7 +104,7 @@ public class LevelEditorScene extends Scene {
         levelEditorStuff.imgui();
         ImGui.end();
 
-        ImGui.begin("Test window");
+        ImGui.begin("Sprite Sheet");
 
         ImVec2 windowPos = new ImVec2();
         ImGui.getWindowPos(windowPos);

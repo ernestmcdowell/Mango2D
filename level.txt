@@ -1,8 +1,24 @@
 [
   {
-    "uid": 1,
+    "uid": 5,
     "name": "Sprite_Object_Gen",
     "components": [
+      {
+        "type": "mango.Transform",
+        "properties": {
+          "position": {
+            "x": 315.9,
+            "y": 341.8
+          },
+          "scale": {
+            "x": 32.0,
+            "y": -605.8
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 19
+        }
+      },
       {
         "type": "components.SpriteRenderer",
         "properties": {
@@ -22,135 +38,19 @@
             },
             "texCoords": [
               {
-                "x": 0.85714287,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.85714287,
+                "x": 0.14285715,
                 "y": 0.8333333
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.8333333
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.9166667
-              }
-            ]
-          },
-          "uid": 6
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 256.0,
-        "y": 288.0
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      },
-      "rotation": 0.0
-    },
-    "zIndex": 0,
-    "doSerialization": true
-  },
-  {
-    "uid": 2,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 0.99999,
-            "z": 0.99999,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/images/blocks.bmp",
-              "width": 112,
-              "height": 192
-            },
-            "texCoords": [
-              {
-                "x": 1.0,
-                "y": 0.9166667
-              },
-              {
-                "x": 1.0,
-                "y": 0.8333333
-              },
-              {
-                "x": 0.85714287,
-                "y": 0.8333333
-              },
-              {
-                "x": 0.85714287,
-                "y": 0.9166667
-              }
-            ]
-          },
-          "uid": 13
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 192.0,
-        "y": 160.0
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      },
-      "rotation": 0.0
-    },
-    "zIndex": 0,
-    "doSerialization": true
-  },
-  {
-    "uid": 3,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/images/blocks.bmp",
-              "width": 112,
-              "height": 192
-            },
-            "texCoords": [
-              {
-                "x": 0.2857143,
-                "y": 0.8333333
-              },
-              {
-                "x": 0.2857143,
-                "y": 0.75
               },
               {
                 "x": 0.14285715,
                 "y": 0.75
               },
               {
-                "x": 0.14285715,
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
                 "y": 0.8333333
               }
             ]
@@ -159,18 +59,6 @@
         }
       }
     ],
-    "transform": {
-      "position": {
-        "x": 256.0,
-        "y": 192.0
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      },
-      "rotation": 0.0
-    },
-    "zIndex": 0,
     "doSerialization": true
   }
 ]
