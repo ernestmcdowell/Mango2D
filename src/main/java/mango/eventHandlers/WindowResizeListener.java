@@ -1,4 +1,4 @@
-package eventHandlers;
+package mango.eventHandlers;
 
 public class WindowResizeListener {
 

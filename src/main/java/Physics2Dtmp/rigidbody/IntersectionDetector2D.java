@@ -1,8 +1,8 @@
-package Physics2D.rigidbody;
+package Physics2Dtmp.rigidbody;
 
-import Physics2D.primitives.AABB2D;
-import Physics2D.primitives.Box2D;
-import Physics2D.primitives.Circle;
+import Physics2Dtmp.primitives.AABB2D;
+import Physics2Dtmp.primitives.Box2D;
+import Physics2Dtmp.primitives.Circle;
 import org.joml.Vector2f;
 import renderer.Line2D;
 import util.MMath;

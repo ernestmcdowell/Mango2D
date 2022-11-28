@@ -1,6 +1,6 @@
-package Physics2D.primitives;
+package Physics2Dtmp.primitives;
 
-import Physics2D.rigidbody.Rigidbody2D;
+import Physics2Dtmp.rigidbody.Rigidbody2D;
 import org.joml.Vector2f;
 
 //Axis aligned bounding box

@@ -7,6 +7,9 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 16
 
 repositories {
+    flatDir{
+        dirs 'libs'
+    }
     jcenter()
     mavenCentral()
 }
@@ -21,6 +24,9 @@ project.ext.lwjglNatives = "natives-windows"
 project.ext.imguiVersion = '1.77-0.17.1'
 
 dependencies {
+
+    //libs Box2d
+    implementation name: 'jbox2d-library'
     //imgui stuff
     implementation "io.imgui.java:binding:$imguiVersion"
     implementation "io.imgui.java:lwjgl3:$imguiVersion"
